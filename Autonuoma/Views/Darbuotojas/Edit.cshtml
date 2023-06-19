@@ -1,0 +1,75 @@
+@model Org.Ktu.Isk.P175B602.Autonuoma.ViewModels.DarbuotojasEditVM
+@{
+	ViewData["title"] = "Darbuotojo informacijos keitimas";
+}
+
+<div class="main-content-header container-fluid d-flex d-row justify-content-between align-items-center">
+	<span class="title">@ViewData["title"]</span>
+	<span class="actions">
+		<a href="@Url.Action("Index")" class="link-primary"><i class="fa-solid fa-angles-left"></i> Atgal į sarašą</a>
+	</span>
+</div>
+
+<div class="container-fluid d-flex justify-content-center">
+@using (Html.BeginForm())
+{
+	@Html.AntiForgeryToken()
+
+	@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    
+	<fieldset class="border rounded shadow p-2">
+        <div class="form-group">
+			@Html.LabelFor(m => m.Model.kodas, new { @class = "control-label" })
+			@Html.EditorFor(m => m.Model.kodas, new { htmlAttributes = new { @class = "form-control" } })
+			@Html.ValidationMessageFor(m => m.Model.kodas, "", new { @class = "text-danger" })
+		</div>
+
+        <div class="form-group">
+			@Html.LabelFor(m => m.Model.vardas, new { @class = "control-label" })
+			@Html.EditorFor(m => m.Model.vardas, new { htmlAttributes = new { @class = "form-control" } })
+			@Html.ValidationMessageFor(m => m.Model.vardas, "", new { @class = "text-danger" })
+		</div>
+
+        <div class="form-group">
+			@Html.LabelFor(m => m.Model.pavarde, new { @class = "control-label" })
+			@Html.EditorFor(m => m.Model.pavarde, new { htmlAttributes = new { @class = "form-control" } })
+			@Html.ValidationMessageFor(m => m.Model.pavarde, "", new { @class = "text-danger" })
+		</div>
+
+		<div class="form-group">
+			@Html.LabelFor(m => m.Model.fkfilialas, new { @class = "control-label" })
+			@Html.DropDownListFor(m => m.Model.fkfilialas, Model.Lists.filialai, "--------------", new { @class = "form-control" })
+			@Html.ValidationMessageFor(m => m.Model.fkfilialas, "", new { @class = "text-danger" })
+		</div>
+
+		<div class="form-group">
+			@Html.LabelFor(m => m.Model.elpastas, new { @class = "control-label" })
+			@Html.EditorFor(m => m.Model.elpastas, new { htmlAttributes = new { @class = "form-control" } })
+			@Html.ValidationMessageFor(m => m.Model.elpastas, "", new { @class = "text-danger" })
+		</div>
+
+        <div class="form-group">
+			@Html.LabelFor(m => m.Model.telnr, new { @class = "control-label" })
+			@Html.EditorFor(m => m.Model.telnr, new { htmlAttributes = new { @class = "form-control" } })
+			@Html.ValidationMessageFor(m => m.Model.telnr, "", new { @class = "text-danger" })
+		</div>
+
+        <div class="form-group">
+			@Html.LabelFor(m => m.Model.stazas, new { @class = "control-label" })
+			@Html.EditorFor(m => m.Model.stazas, new { htmlAttributes = new { @class = "form-control" } })
+			@Html.ValidationMessageFor(m => m.Model.stazas, "", new { @class = "text-danger" })
+		</div>
+	</fieldset>
+
+	<div class="container-fluid d-flex d-row justify-content-end">
+		<button name="save" value="1" class="btn btn-success"><i class="fa-solid fa-floppy-disk"></i> Išsaugoti</button>
+	</div>
+}
+</div>
+
+<div class="main-content-footer container-fluid d-flex d-row justify-content-between align-items-center">
+	<span class="title"></span>
+	<span class="actions">
+		<a href="@Url.Action("Index")" class="link-primary"><i class="fa-solid fa-angles-left"></i> Atgal į sarašą</a>
+	</span>
+</div>
